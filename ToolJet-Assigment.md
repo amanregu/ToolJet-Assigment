@@ -20,7 +20,12 @@ In this tutorial, we will be utilizing a REST API endpoint as our data source. T
 
 To connect to the dummyJSON REST API data source, you need to navigate to the query panel at the bottom of the app builder. From there, click the `+ Add` button to open the dropdown with the list of available Data Sources and select `REST API`. Then, name this query as `fetchUsers`. For simplicity, we'll be using an unauthenticated API endpoint, which means we won't have to enter the parameters required for authenticated requests.
 
+![image info](./assets/Create-query.png)
+
 In the URL field, enter `https://dummyjson.com/users` as the URL. Scroll down to the `Settings` section and turn on the toggle for `Run this query on application load?` This will ensure that the query runs every time we start/restart the application. You can leave the rest of the fields and toggles untouched. You can now preview the query results by clicking the `Preview` button.
+
+![image info](./assets/enter-parameters.png)
+
 
 ### Expected JSON preview
 
