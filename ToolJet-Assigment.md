@@ -12,7 +12,8 @@ For this tutorial, we will use [**ToolJet Cloud**](https://www.tooljet.com/). Si
 
 To create a new application in ToolJet, first, go to the
 [**ToolJet Dashboard**](https://app.tooljet.com/) and look for the `Create new app` button in the top left corner. When you click on it, you will be prompted to enter the App name. Let's name the app `List Users`. Please note that the app name should be unique and must not exceed 50 characters. Once you have entered the name, click on the `+ Create App` button. This will create a new application with an empty canvas, and you will be ready to get started.
-![image info](./assets/Create-app.png)
+
+![create-app](./assets/Create-app.png)
 
 ## Connecting to a Data Source
 
@@ -20,11 +21,11 @@ In this tutorial, we will be utilizing a REST API endpoint as our data source. T
 
 To connect to the dummyJSON REST API data source, you need to navigate to the query panel at the bottom of the app builder. From there, click the `+ Add` button to open the dropdown with the list of available Data Sources and select `REST API`. Then, name this query as `fetchUsers`. For simplicity, we'll be using an unauthenticated API endpoint, which means we won't have to enter the parameters required for authenticated requests.
 
-![image info](./assets/Create-query.png)
+![create-query](./assets/Create-query.png)
 
 In the URL field, enter `https://dummyjson.com/users` as the URL. Scroll down to the `Settings` section and turn on the toggle for `Run this query on application load?` This will ensure that the query runs every time we start/restart the application. You can leave the rest of the fields and toggles untouched. You can now preview the query results by clicking the `Preview` button.
 
-![image info](./assets/Enter-parameters.png)
+![enter-parameters](./assets/Enter-parameters.png)
 
 
 ### Expected JSON preview
@@ -110,14 +111,14 @@ In the URL field, enter `https://dummyjson.com/users` as the URL. Scroll down to
 
 To access the query results within the components, we can use `{{queries.<queryname>.data}}`. Whenever we need to write custom JavaScript code or access variables that are available within the app builder, we have to use double curly braces `{{}}`. We can also use the inspector available in the left sidebar to check all the available query results and other accessible variables.
 
-![image info](./assets/Inspector.png)
+![inspector](./assets/Inspector.png)
 
 ## Adding Data to a Table Component
 
 We have created a query to fetch data for our users. To display this data in a table, we need to drag the Table component from the right sidebar onto the canvas. The table size can be adjusted as per our requirements, and we can customise it using the input fields in the right sidebar. Rename the table from 'table1' to 'userTable'. Currently, the table displays mock data, which can be replaced with the query result we obtained from `fetchQuery`. Replace the JSON data with `{{queries.fetchUsers.data.users}}`. This will let ToolJet to create columns automatically based on the data received. The Table component on the canvas should populate with this data by itself. To keep our table simple and concise, we will delete all the columns except for `id`, `email`, `firstName`, `lastName`, `crypto.coin`, and `crypto.network`.
 We can adjust the parameters for individual columns by clicking on the column name in the right sidebar. The column names were automatically generated based on the data value keys. Update them to improve the table's appearance.
 
-![image info](./assets/Update-data-column-name.png)
+![update-data-and-column-name](./assets/Update-data-column-name.png)
 
 
 ## Transforming the data using JavaScript
@@ -133,13 +134,15 @@ return data.users.map((user) => {
   };
 });
 ```
-![image info](./assets/Enable-Transformations.png)
+![enable-transformations](./assets/Enable-Transformations.png)
 
 We have successfully added a key-value pair to our user object. It's important to note that we have transformed the data, so it will now be available as `{{queries.fetchUsers.data}}` instead of `{{queries.fetchUsers.data.users}}` in our components. Let's update the data parameter of our Table component to reflect this change. 
 To do this, go to the properties of the Table component and change the data value from `{{queries.fetchUsers.data.users}}` to `{{queries.fetchUsers.data}}`. 
 Additionally, since we have added a column for the full name, we should remove the columns for the first and last names.
 
-![image info](./assets/Update-table-data.png)
+![update-table-data](./assets/Update-table-data.png)
+
+That's all. Click on the Release button located at the top right corner to publish your ToolJet app.
 
 # Conclusion
 
